@@ -12,9 +12,9 @@ def findLargestSum(a):
 		pass
 
 	for j in range(len(a)-1,-1,-1):
-		sumValue = sumValue - ((len(a)-1)*a[j]) - a[j] + changeSumValue
+		sumValue = sumValue - ((len(a))*a[j]) + changeSumValue
 		print(sumValue)
 
 	
 
-findLargestSum([10, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+findLargestSum([1, 20, 2, 10])
