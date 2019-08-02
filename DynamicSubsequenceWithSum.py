@@ -1,26 +1,34 @@
-# https://www.youtube.com/watch?v=nqlNzOcnCfs
+# https://www.geeksforgeeks.org/subsetsumproblemdp25/
 
-numberOfSeqs = 0
 
-def calculateSum(arr, sum, target):
-	global numberOfSeqs
-	if sum == target:
-		numberOfSeqs += 1
-		return
-	elif sum > target:
-		return
-	elif len(arr) == 0:
-		return
+def calculate_sum(array, n, target, mem):
+	key = str(n) + str(target)
+	if key in mem:
+		print('HIT')
+		return mem[key]
+	if target == 0:
+		mem[key] = True
+		return True
+	elif target < 0:
+		mem[key] = False
+		return False
+	elif n == 0:
+		mem[key] = False
+		return False
+	elif array[n-1] > target:
+		return calculate_sum(array, n-1, target, mem)
 	else:
-		length = len(arr)
-		for index in range(0,length):
-			element = arr[0]
-			arr.remove(element)
-			calculateSum(
-				arr.copy(), 
-				sum + element, 
-				target)
+		res1 = calculate_sum(array, n-1, target, mem)
+		res2 = calculate_sum(array, n-1, target - array[n-1], mem)
+		if res1 == True or res2 == True:
+			mem[key] = True
+			return True
 
+		mem[key] = False
+		return False
+	
+	
 
-calculateSum([1,2,3,4,5,6,7,8], 0, 8)
-print(numberOfSeqs)
+arr = [3, 34, 12, 2, 5, 4]
+print(calculate_sum(arr,len(arr),9, {}))
+
