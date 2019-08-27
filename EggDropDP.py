@@ -8,6 +8,7 @@ def egg_count(n, k):
 	key = str(n) + '-' + str(k)
 	if key in map:
 		return map[key]
+	
 	if k == 1:
 		map[key] = n
 		return n
@@ -48,5 +49,5 @@ def egg_count_bu(n,k):
 
 	return count[n][k]
 
-print(egg_count_bu(100, 2))
+print(egg_count_bu(100, 7))
 
