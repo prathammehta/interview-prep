@@ -21,6 +21,7 @@ def generate_temp(p):
 
 def KMP(s, p):
 	temp = generate_temp(p)
+	print(temp)
 
 	i = 0
 	j = 0
